@@ -87,10 +87,13 @@ if __name__ == "__main__":
     with open(input_path, 'r', errors='ignore') as ifile:
         input_lines = [line.strip().lower() for line in ifile]
     
-    for line in input_lines:
-        op_binary = op_to_binary(line)
-        if op_binary:
-            for byte in op_binary.split(' '):
-                _hex = format(int(byte, 2), '02x')
-                print(_hex, end = ' ')
-            print()
+    with open(output_path, 'w', errors='ignore') as ofile:
+        for line in input_lines:
+            op_binary = op_to_binary(line)
+            if op_binary:
+                for byte in op_binary.split(' '):
+                    _hex = format(int(byte, 2), '02x')
+                    print(_hex, end = ' ')
+                    ofile.write(_hex + ' ')
+                print()
+                ofile.write('\n')
