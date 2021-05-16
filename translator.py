@@ -89,7 +89,7 @@ def op_to_binary(op: str):
 
     binary_command  = operations.get(command)
     
-    if command.lower()[0] is 'j':
+    if command[0] == 'j':
         print('Jump to: ' + arg1)
         binary_command = binary_command.replace('{label}', 'label: ' + arg1)
         pass
@@ -185,7 +185,7 @@ if __name__ == "__main__":
                 preCompiledCode.append(operation)
             pass
         
-        print('\nPre compiled code:', preCompiledCode)
+        print('\nPrecompiled code:', preCompiledCode)
         
         linked_code = link_code(preCompiledCode)
         
